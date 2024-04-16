@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: cc3607fa19a0b104eb80ebed28b7ee13
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - range_selector: {fileID: 5978434466852617175, guid: f0e9b09b6115e514abf65e4e9476dae8, type: 3}
+  - short_left_edge_prefab: {fileID: 7784231192438042882, guid: 225b8715aca8a574ea05a333832520cf, type: 3}
+  - tall_left_edge_prefab: {fileID: 5813434946400638391, guid: 1cf237d2496f10a4fb6f66cc39425cb7, type: 3}
+  - tall_left_connect_prefab: {fileID: 6534918185281349420, guid: 28c7d209a9136cf48a0b01df77ff92da, type: 3}
+  - short_wall_prefab: {fileID: 5618062384566641300, guid: 05b1e3f4fe64a1b48b86e0b8eb9e0313, type: 3}
+  - tall_wall_prefab: {fileID: 3785960680041550287, guid: 312b6178aac71d44a9e17ca1013c64b7, type: 3}
+  - tall_right_connect_prefab: {fileID: 752526550005038541, guid: 5174c6935de59524ca62b0566f03ea44, type: 3}
+  - tall_right_edge_prefab: {fileID: 6660539223090209872, guid: 359a2c6203601b342a378552a278c437, type: 3}
+  - short_right_edge_prefab: {fileID: 2255796779140722038, guid: 123344d01e7513248afee49682b002ed, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

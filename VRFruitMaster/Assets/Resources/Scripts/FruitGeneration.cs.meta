@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: 6cc64be22351dde418150c48aa31ff01
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - watermelon: {fileID: 7600101896963371700, guid: 49bb3b3af301d894caa8c48c77bdf7e7, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
