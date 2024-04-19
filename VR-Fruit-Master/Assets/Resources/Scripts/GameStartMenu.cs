@@ -10,11 +10,6 @@ public class GameStartMenu : MonoBehaviour
     public GameObject rangeMenu;
     public GameObject aboutMenu;
 
-    /**[Header("Weapon Selection UI")]
-    public GameObject weaponSelectionMenu;
-    public Dropdown leftHandDropdown;
-    public Dropdown rightHandDropdown;
-    public Button weaponBackButton;**/
 
     [Header("Main Menu Buttons")]
     public Button startButton;
@@ -31,9 +26,6 @@ public class GameStartMenu : MonoBehaviour
         rangeButton.onClick.AddListener(EnableRangeMenu);
         aboutButton.onClick.AddListener(EnableAboutMenu);
         quitButton.onClick.AddListener(QuitGame);
-
-        // Weapon Selection Button Listeners
-        //weaponBackButton.onClick.AddListener(HideWeaponSelectionMenu);
 
         EnableMainMenu();
     }
@@ -56,7 +48,6 @@ public class GameStartMenu : MonoBehaviour
         weaponsMenu.SetActive(false);
         rangeMenu.SetActive(false);
         aboutMenu.SetActive(false);
-        //weaponSelectionMenu.SetActive(false);
     }
 
     public void EnableMainMenu()
@@ -83,15 +74,4 @@ HideAll();
         aboutMenu.SetActive(true);
     }
 
-    void ShowWeaponSelectionMenu()
-    {
-        HideAll();
-        //weaponSelectionMenu.SetActive(true);
-    }
-
-    void HideWeaponSelectionMenu()
-    {
-        //weaponSelectionMenu.SetActive(false);
-        EnableMainMenu(); // Return to main menu after hiding weapon selection menu
-    }
 }
