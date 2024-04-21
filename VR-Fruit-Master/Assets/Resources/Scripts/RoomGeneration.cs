@@ -21,7 +21,7 @@ public class RoomGeneration : MonoBehaviour
     public GameObject tall_right_edge_prefab;
     public GameObject short_right_edge_prefab;
 
-    private GameObject range_selector;
+    private GameObject game_controller;
     private int range;
     private int segments;
 
@@ -94,8 +94,8 @@ public class RoomGeneration : MonoBehaviour
     // Start is called before the first frame update
     void Start() 
     {
-        range_selector = GameObject.FindGameObjectWithTag("Range Selector Tag");
-        range = range_selector.GetComponent<RangeSelector>().range;
+        game_controller = GameObject.FindGameObjectWithTag("GameController");
+        range = game_controller.GetComponent<GameController>().range;
         segments = range/15;
 
         updateWalls();
@@ -105,7 +105,7 @@ public class RoomGeneration : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        range = range_selector.GetComponent<RangeSelector>().range;
+        range = game_controller.GetComponent<GameController>().range;
         int segments_updated = range/15;
 
         if(segments_updated != segments) {

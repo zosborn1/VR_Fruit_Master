@@ -12,6 +12,7 @@ TagManager:
   - Fruit
   - Range Selector Tag
   - Weapon
+  - VariableHolder
   layers:
   - Default
   - TransparentFX

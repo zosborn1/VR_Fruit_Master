@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028326, g: 0.22571333, b: 0.30692202, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -323,6 +323,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Complete XR Origin Set Up Variant 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5346629211179340669, guid: b0e53b678557b4ea6a1bd3675d31fe3b, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -495,7 +499,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3166691219626898809, guid: 441740e17974a764d899fc682613dc5c, type: 3}
       propertyPath: m_Name
-      value: Range Selector
+      value: GameController
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -552,7 +556,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5425757987812496745, guid: dec450f2d71b2e94dad07351ee1e6946, type: 3}
       propertyPath: m_Name
-      value: Room Script
+      value: WallGeneration
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -689,6 +693,6 @@ SceneRoots:
   - {fileID: 1900725529}
   - {fileID: 653771226}
   - {fileID: 1089707175}
-  - {fileID: 1256647818}
   - {fileID: 1748490826}
+  - {fileID: 1256647818}
   - {fileID: 620899572}

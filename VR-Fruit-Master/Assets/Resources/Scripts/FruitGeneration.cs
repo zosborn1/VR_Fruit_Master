@@ -8,7 +8,7 @@ public class FruitGeneration : MonoBehaviour
     public int frequency;
 
     private int range;
-    private GameObject range_selector;
+    private GameObject game_controller;
 
     private int force_vertical = 280;
     private int force_horizontal = 90;
@@ -37,8 +37,8 @@ public class FruitGeneration : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        range_selector = GameObject.FindGameObjectWithTag("Range Selector Tag");
-        range = range_selector.GetComponent<RangeSelector>().range;
+        game_controller = GameObject.FindGameObjectWithTag("GameController");
+        range = game_controller.GetComponent<GameController>().range;
 
         all_fruits = new GameObject[]{watermelon};
     }
@@ -46,7 +46,7 @@ public class FruitGeneration : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        range = range_selector.GetComponent<RangeSelector>().range;
+        range = game_controller.GetComponent<GameController>().range;
 
         if(Random.Range(1, 1000) <= frequency) {
             GameObject fruit = all_fruits[Random.Range(0,all_fruits.Length-1)];
