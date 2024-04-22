@@ -4,15 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Flame
-  - Projectile
-  - Destroyer
-  - MiniWorldCamera
-  - Water
   - Fruit
-  - Range Selector Tag
   - Weapon
   - VariableHolder
+  - Sword
+  - SlicedFruit
   layers:
   - Default
   - TransparentFX

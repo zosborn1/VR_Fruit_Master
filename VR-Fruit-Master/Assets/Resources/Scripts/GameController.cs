@@ -19,8 +19,13 @@ public class GameController : MonoBehaviour
     public GameObject left_hand;
     public GameObject right_hand;
 
-    void clearWeapons(GameObject player) {
+    public int score;
 
+    void clearWeapons() {
+        if(!left_hand.transform.Find("Weapon"))
+            Destroy(left_hand.transform.Find("Weapon"));
+        if(!right_hand.transform.Find("Weapon"))
+            Destroy(right_hand.transform.Find("Weapon"));
     }
 
     void giveWeapon(GameObject prefab, bool is_left) {
@@ -37,6 +42,8 @@ public class GameController : MonoBehaviour
     }
 
     void Start() {
+        score = 0;
+
         variable_holder = GameObject.FindGameObjectWithTag("VariableHolder");
 
         range = variable_holder.GetComponent<VariableHolder>().range;
