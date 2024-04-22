@@ -5,6 +5,10 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class GameStartMenu : MonoBehaviour
 {
+    public GameObject weaponSelectionPanel;
+    public GameObject rangeSelectionPanel;
+    public GameObject mainMenuPanel;
+
     [Header("Buttons")]
     public Button startButton;
     public Button weaponsButton;
@@ -39,13 +43,23 @@ public class GameStartMenu : MonoBehaviour
     // Placeholder methods for the other buttons
     public void OpenWeaponsMenu()
     {
-        Debug.Log("Weapons button clicked. Functionality not implemented yet.");
-    }
+          Debug.Log("Opening weapon selection...");
+        mainMenuPanel.SetActive(false);
+    weaponSelectionPanel.SetActive(true);
+}
 
     public void OpenRangeMenu()
-    {
-        Debug.Log("Range button clicked. Functionality not implemented yet.");
-    }
+   {
+    Debug.Log("Opening range selection...");
+    mainMenuPanel.SetActive(false);
+    rangeSelectionPanel.SetActive(true);
+}
+public void ReturnToMainMenu()
+{
+    weaponSelectionPanel.SetActive(false);
+    rangeSelectionPanel.SetActive(false);
+    mainMenuPanel.SetActive(true);
+}
 
     public void OpenAboutMenu()
     {
