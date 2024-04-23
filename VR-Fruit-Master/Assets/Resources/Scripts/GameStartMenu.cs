@@ -31,7 +31,7 @@ public class GameStartMenu : MonoBehaviour
     public void StartGame()
     {
         Debug.Log("Starting the game...");
-        SceneManager.LoadScene("newRoom");
+        SceneManager.LoadScene("GameScene");
     }
 
     public void QuitGame()

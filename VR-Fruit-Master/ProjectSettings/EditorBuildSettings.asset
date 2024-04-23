@@ -9,9 +9,15 @@ EditorBuildSettings:
     path: Assets/Start Scene.unity
     guid: 90fdb2d41ea152244bd90aac17528d15
   - enabled: 1
+    path: Assets/IntermediateScene.unity
+    guid: 79afcd20a8f03b742a8ac697d2d3c0e6
+  - enabled: 1
     path: Assets/Start1.unity
     guid: f22356ee9ff8a4cf4b28e2946936d1bc
   - enabled: 1
+    path: Assets/GameScene.unity
+    guid: 26c20ece6744f094487940eb80924356
+  - enabled: 0
     path: Assets/newRoom.unity
     guid: b5dc63444027e4d30b76c58fa16fb4a0
   - enabled: 0
