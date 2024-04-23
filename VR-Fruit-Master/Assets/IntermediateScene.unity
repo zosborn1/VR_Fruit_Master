@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   high_score: 0
-  range: 360
+  range: 60
   left_weapon: weapon1
   right_weapon: weapon2
 --- !u!1660057539 &9223372036854775807

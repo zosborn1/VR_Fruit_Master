@@ -10,7 +10,7 @@ public class FruitGeneration : MonoBehaviour
     private int range;
     private GameObject game_controller;
 
-    private int force_vertical = 260;
+    private int force_vertical = 240;
     private int force_horizontal = 90;
 
     public GameObject watermelon;
