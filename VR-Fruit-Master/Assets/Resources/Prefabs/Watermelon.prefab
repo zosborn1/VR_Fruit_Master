@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3215867063519737826}
   m_Layer: 0
   m_Name: Watermelon
-  m_TagString: Untagged
+  m_TagString: Fruit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,7 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cross_section: {fileID: 2100000, guid: b3e545b9c9daa4948aba51591e13f05c, type: 2}
-  cut_force: 500
+  force: 500
+  smashed_version: {fileID: 524830052836313032, guid: 65d48ae1c01bdd34caea838e49c51738, type: 3}
 --- !u!54 &5502516546576542985
 Rigidbody:
   m_ObjectHideFlags: 0

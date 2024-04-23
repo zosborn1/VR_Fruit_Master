@@ -9,6 +9,9 @@ TagManager:
   - VariableHolder
   - Sword
   - SlicedFruit
+  - Range Selector Tag
+  - Bat
+  - SmashedFruit
   layers:
   - Default
   - TransparentFX

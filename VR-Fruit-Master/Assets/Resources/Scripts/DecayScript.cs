@@ -32,9 +32,8 @@ public class DecayScript : MonoBehaviour
                 temp.a = (1.0f - percent);
                 material.color = temp;
             }
-            // Color temp = this.gameObject.GetComponent<Renderer>().material.color;
-            // temp.a = (1.0f - percent);
-            // this.gameObject.GetComponent<Renderer>().material.color = temp;
+        } else if(this.gameObject.transform.position.y <= -20) {
+            Destroy(this.gameObject);
         }
     }
 
