@@ -8,9 +8,9 @@ public class FruitGeneration : MonoBehaviour
     public int frequency;
 
     private int range;
-    private GameObject range_selector;
+    private GameObject game_controller;
 
-    private int force_vertical = 280;
+    private int force_vertical = 240;
     private int force_horizontal = 90;
 
     public GameObject watermelon;
@@ -21,7 +21,7 @@ public class FruitGeneration : MonoBehaviour
         float spawn_x = (float)System.Math.Cos(spawn_angle)*4.5f;
         float spawn_z = (float)System.Math.Sin(spawn_angle)*4.5f;
 
-        GameObject fruit = Instantiate(fruit_type, new Vector3(spawn_x, 0.5f, spawn_z), Quaternion.identity);
+        GameObject fruit = Instantiate(fruit_type, new Vector3(spawn_x, 0.75f, spawn_z), Quaternion.identity);
 
         fruit.transform.Rotate(Random.Range(0, 359), Random.Range(0, 359), Random.Range(0, 359));
 
@@ -31,14 +31,14 @@ public class FruitGeneration : MonoBehaviour
     
         float target_x = (float)System.Math.Cos(target)*4;
         float target_z = (float)System.Math.Sin(target)*4;
-        fruit.GetComponent<Rigidbody>().AddForce(target_x*force_horizontal, force_vertical, target_z*force_horizontal);
+        fruit.GetComponent<Rigidbody>().AddForce(target_x*force_horizontal, force_vertical + Random.Range(0, 20), target_z*force_horizontal);
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        range_selector = GameObject.FindGameObjectWithTag("Range Selector Tag");
-        range = range_selector.GetComponent<RangeSelector>().range;
+        game_controller = GameObject.FindGameObjectWithTag("GameController");
+        range = game_controller.GetComponent<GameController>().range;
 
         all_fruits = new GameObject[]{watermelon};
     }
@@ -46,7 +46,7 @@ public class FruitGeneration : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        range = range_selector.GetComponent<RangeSelector>().range;
+        range = game_controller.GetComponent<GameController>().range;
 
         if(Random.Range(1, 1000) <= frequency) {
             GameObject fruit = all_fruits[Random.Range(0,all_fruits.Length-1)];
