@@ -2483,7 +2483,7 @@ PrefabInstance:
     - target: {fileID: 6508061949371727762, guid: 441740e17974a764d899fc682613dc5c, type: 3}
       propertyPath: weapon2
       value: 
-      objectReference: {fileID: 4924174617534481421, guid: 2f86a22aa4c17094eb5770bd7bc549d1, type: 3}
+      objectReference: {fileID: 4958980735146155355, guid: 08f334e0e0d824436aa1278a1ae98fd9, type: 3}
     - target: {fileID: 6508061949371727762, guid: 441740e17974a764d899fc682613dc5c, type: 3}
       propertyPath: weapon3
       value: 
