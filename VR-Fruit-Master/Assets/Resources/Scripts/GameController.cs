@@ -8,11 +8,6 @@ public class GameController : MonoBehaviour
 {
     public enum GAME_STATE {COUNTDOWN, GAME_PLAY, GAME_DONE, DISPLAY_END, RETURN_MENU};
 
-    [Header("VariableHolder")]
-    public int range;
-    public string left_weapon;
-    public string right_weapon;
-
     [Header("Prefabs")]
     public GameObject weapon1;
     public GameObject weapon2;
@@ -49,7 +44,6 @@ public class GameController : MonoBehaviour
     public List<int> fruit_hit;
     public List<int> fruit_miss;
 
-    private GameObject variable_holder;
     private TextMeshProUGUI timer_text;
     private TextMeshProUGUI countdown_text;
     private TextMeshProUGUI points_text;
@@ -131,7 +125,6 @@ public class GameController : MonoBehaviour
         countdown_text = countdown.GetComponent<TextMeshProUGUI>();
         timer_text = timer.GetComponent<TextMeshProUGUI>();
         points_text = points.GetComponent<TextMeshProUGUI>();
-        variable_holder = GameObject.FindGameObjectWithTag("VariableHolder");
         game_state = GAME_STATE.COUNTDOWN;
         fruit_hit = new List<int>();
         fruit_miss = new List<int>();
@@ -139,35 +132,29 @@ public class GameController : MonoBehaviour
         // range = variable_holder.GetComponent<VariableHolder>().range;
 
         // switch(variable_holder.GetComponent<VariableHolder>().left_weapon) {
-        switch(left_weapon) {
-            case "weapon1":
+        switch(VariableHolder.left_weapon) {
+            case 1:
                 giveWeapon(weapon1, true);
                 break;
-            case "weapon2":
+            case 2:
                 giveWeapon(weapon2, true);
                 break;
-            case "weapon3":
+            case 3:
                 giveWeapon(weapon3, true);
-                break;
-            case "weapon4":
-                giveWeapon(weapon4, true);
                 break;
             default:
                 break;
         }
         // switch(variable_holder.GetComponent<VariableHolder>().right_weapon) {
-        switch(right_weapon) {
-            case "weapon1":
+        switch(VariableHolder.right_weapon) {
+            case 1:
                 giveWeapon(weapon1, false);
                 break;
-            case "weapon2":
+            case 2:
                 giveWeapon(weapon2, false);
                 break;
-            case "weapon3":
+            case 3:
                 giveWeapon(weapon3, false);
-                break;
-            case "weapon4":
-                giveWeapon(weapon4, false);
                 break;
             default:
                 break;
