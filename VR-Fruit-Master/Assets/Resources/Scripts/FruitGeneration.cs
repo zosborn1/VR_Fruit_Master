@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class FruitGeneration : MonoBehaviour
 {
+
     private int range;
+
     private GameObject game_controller;
 
     private int force_vertical = 200;
@@ -34,18 +36,24 @@ public class FruitGeneration : MonoBehaviour
     void Start()
     {
         game_controller = GameObject.FindGameObjectWithTag("GameController");
+
         range = game_controller.GetComponent<GameController>().range;
+
+
+        all_fruits = new GameObject[]{watermelon};
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        range = game_controller.GetComponent<GameController>().range;
+        currentRange = VariableHolder.range;
 
         if(Random.Range(0, 15000) <= range) {
             GameObject fruit = fruits[Random.Range(0,fruits.Length-1)];
 
             double spawn_angle = (double)(Random.Range(0, range)) - (double)range/2.0;
+
             int target_angle = Random.Range(0, 30);
 
             CreateFruit(fruit, spawn_angle);

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.07170497, g: 0.1998818, b: 0.38022545, a: 1}
+  m_IndirectSpecularColor: {r: 0.07170968, g: 0.20043603, b: 0.38065118, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -196,14 +196,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 977d45628ec6d4ce785c91270f81a01f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponSelectionPanel: {fileID: 0}
-  rangeSelectionPanel: {fileID: 0}
-  mainMenuPanel: {fileID: 0}
   startButton: {fileID: 0}
-  weaponsButton: {fileID: 0}
-  rangeButton: {fileID: 0}
-  aboutButton: {fileID: 0}
-  quitButton: {fileID: 0}
+  rangeSlider: {fileID: 0}
+  leftWeaponDropdown: {fileID: 0}
+  rightWeaponDropdown: {fileID: 0}
+  rangeTitle: {fileID: 0}
 --- !u!114 &35043587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -473,14 +470,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 977d45628ec6d4ce785c91270f81a01f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponSelectionPanel: {fileID: 0}
-  rangeSelectionPanel: {fileID: 0}
-  mainMenuPanel: {fileID: 0}
   startButton: {fileID: 0}
-  weaponsButton: {fileID: 0}
-  rangeButton: {fileID: 0}
-  aboutButton: {fileID: 0}
-  quitButton: {fileID: 0}
+  rangeSlider: {fileID: 0}
+  leftWeaponDropdown: {fileID: 0}
+  rightWeaponDropdown: {fileID: 0}
+  rangeTitle: {fileID: 0}
 --- !u!114 &125131194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4236,7 +4230,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1007177574}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1302004125}
+        m_TargetAssemblyTypeName: GameStartMenu, Assembly-CSharp
+        m_MethodName: StartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1007177574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4751,8 +4757,8 @@ GameObject:
   - component: {fileID: 1302004122}
   - component: {fileID: 1302004121}
   - component: {fileID: 1302004120}
-  - component: {fileID: 1302004123}
   - component: {fileID: 1302004124}
+  - component: {fileID: 1302004125}
   m_Layer: 5
   m_Name: Menu
   m_TagString: Untagged
@@ -4838,26 +4844,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 1.2}
   m_SizeDelta: {x: 1000, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1302004123
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1302004118}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 977d45628ec6d4ce785c91270f81a01f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponSelectionPanel: {fileID: 0}
-  rangeSelectionPanel: {fileID: 0}
-  mainMenuPanel: {fileID: 0}
-  startButton: {fileID: 1007177573}
-  weaponsButton: {fileID: 1003407194}
-  rangeButton: {fileID: 993341440}
-  aboutButton: {fileID: 912017600}
-  quitButton: {fileID: 775797694}
 --- !u!114 &1302004124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4877,6 +4863,23 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RaycastTriggerInteraction: 1
+--- !u!114 &1302004125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1302004118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 977d45628ec6d4ce785c91270f81a01f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startButton: {fileID: 1007177573}
+  rangeSlider: {fileID: 1797021754}
+  leftWeaponDropdown: {fileID: 1553176590}
+  rightWeaponDropdown: {fileID: 2135855180}
+  rangeTitle: {fileID: 2084296513}
 --- !u!1 &1324780474
 GameObject:
   m_ObjectHideFlags: 0
@@ -5352,14 +5355,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 977d45628ec6d4ce785c91270f81a01f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponSelectionPanel: {fileID: 0}
-  rangeSelectionPanel: {fileID: 0}
-  mainMenuPanel: {fileID: 0}
   startButton: {fileID: 0}
-  weaponsButton: {fileID: 0}
-  rangeButton: {fileID: 0}
-  aboutButton: {fileID: 0}
-  quitButton: {fileID: 0}
+  rangeSlider: {fileID: 0}
+  leftWeaponDropdown: {fileID: 0}
+  rightWeaponDropdown: {fileID: 0}
+  rangeTitle: {fileID: 0}
 --- !u!114 &1478636418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5848,11 +5848,23 @@ MonoBehaviour:
       m_Image: {fileID: 0}
     - m_Text: Axe
       m_Image: {fileID: 0}
-    - m_Text: Staff
+    - m_Text: Bat
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1302004125}
+        m_TargetAssemblyTypeName: GameStartMenu, Assembly-CSharp
+        m_MethodName: ConfirmLeftWeapon
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &1553176591
 MonoBehaviour:
@@ -5965,14 +5977,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 977d45628ec6d4ce785c91270f81a01f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponSelectionPanel: {fileID: 0}
-  rangeSelectionPanel: {fileID: 0}
-  mainMenuPanel: {fileID: 0}
   startButton: {fileID: 0}
-  weaponsButton: {fileID: 0}
-  rangeButton: {fileID: 0}
-  aboutButton: {fileID: 0}
-  quitButton: {fileID: 0}
+  rangeSlider: {fileID: 0}
+  leftWeaponDropdown: {fileID: 0}
+  rightWeaponDropdown: {fileID: 0}
+  rangeTitle: {fileID: 0}
 --- !u!114 &1618456948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6527,7 +6536,19 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1302004125}
+        m_TargetAssemblyTypeName: GameStartMenu, Assembly-CSharp
+        m_MethodName: ConfirmRangeSelection
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1804547504
 GameObject:
   m_ObjectHideFlags: 0
@@ -7828,11 +7849,23 @@ MonoBehaviour:
       m_Image: {fileID: 0}
     - m_Text: Axe
       m_Image: {fileID: 0}
-    - m_Text: Staff
+    - m_Text: Bat
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1302004125}
+        m_TargetAssemblyTypeName: GameStartMenu, Assembly-CSharp
+        m_MethodName: ConfirmRightWeapon
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &2135855181
 MonoBehaviour:

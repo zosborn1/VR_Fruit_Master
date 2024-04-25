@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class VariableHolder : MonoBehaviour
 {
-    public int high_score = 0;
-
-    [Range(60, 360)]
-    public int range = 60;
-
-    public string left_weapon;
-    public string right_weapon;
+    public int high_score;
+    public static int range;
+    public static int left_weapon;
+    public static int right_weapon;
 }
