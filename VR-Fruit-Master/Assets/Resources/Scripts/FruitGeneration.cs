@@ -10,7 +10,7 @@ public class FruitGeneration : MonoBehaviour
     private int range;
     private GameObject game_controller;
 
-    private int force_vertical = 240;
+    private int force_vertical = 200;
     private int force_horizontal = 90;
 
     public GameObject watermelon;
@@ -31,7 +31,7 @@ public class FruitGeneration : MonoBehaviour
     
         float target_x = (float)System.Math.Cos(target)*4;
         float target_z = (float)System.Math.Sin(target)*4;
-        fruit.GetComponent<Rigidbody>().AddForce(target_x*force_horizontal, force_vertical + Random.Range(0, 20), target_z*force_horizontal);
+        fruit.GetComponent<Rigidbody>().AddForce(target_x*force_horizontal, force_vertical + Random.Range(0, 30), target_z*force_horizontal);
     }
 
     // Start is called before the first frame update

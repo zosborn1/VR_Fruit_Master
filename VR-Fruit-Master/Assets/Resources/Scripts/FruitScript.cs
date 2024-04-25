@@ -5,14 +5,15 @@ using EzySlice;
 
 public class FruitScript : MonoBehaviour
 {
+    public int type;
     public Material cross_section;
     public float force = 500;
     public GameObject smashed_version;
+    
     private GameObject game_controller;
 
-    void changePoints(int point) {
-        // game_controller.GetComponent<GameController>().score += point;
-        // print(game_controller.GetComponent<GameController>().score);
+    void changePoints(int point, bool hit) {
+        game_controller.GetComponent<GameController>().updateScore(point, hit, type);
     }   
 
     void setupSliced(GameObject component, Vector3 velocity) {
@@ -73,21 +74,15 @@ public class FruitScript : MonoBehaviour
     void OnTriggerEnter(Collider collision) {
         switch(collision.gameObject.tag) {
             case "Sword":
-                changePoints(10);
+                changePoints(100, true);
                 sliceFruit(collision);
                 break;
             case "Axe":
-                changePoints(10);
+                changePoints(100, true);
                 sliceFruit(collision);
                 break;
-            case "Bat":
-                changePoints(10);
-                smashFruit();
-                break;
-            case "Fruit":
-                break;
             default:
-                changePoints(-2);
+                changePoints(-10, false);
                 smashFruit();
                 break;
         }
@@ -96,13 +91,21 @@ public class FruitScript : MonoBehaviour
     void OnCollisionEnter(Collision collision) {
         switch(collision.gameObject.tag) {
             case "Player":
-                changePoints(-4);
+                changePoints(-20, false);
+                smashFruit();
+                break;
+            case "Hand":
+                changePoints(10, true);
+                smashFruit();
+                break;
+            case "Bat":
+                changePoints(100, true);
                 smashFruit();
                 break;
             case "Fruit":
                 break;
             default:
-                changePoints(-2);
+                changePoints(-10, false);
                 smashFruit();
                 break;
         }
