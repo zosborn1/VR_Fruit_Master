@@ -19,8 +19,10 @@ public class GameController : MonoBehaviour
     public GameObject weapon3;
     public GameObject weapon4;
     public GameObject[] fruit;
+    public GameObject add_point;
 
     [Header("UI/Player")]
+    public GameObject whole_ui;
     public GameObject timer;
     public GameObject countdown;
     public GameObject heart1;
@@ -39,10 +41,10 @@ public class GameController : MonoBehaviour
     [Header("Other")]
     public int score = 0;
     public GAME_STATE game_state;
-    private float time_left = 15.0f;
+    private float time_left = 90.0f;
     private float start_time = 5.0f;
-    private float spawn_delay = 0.2f;
-    private float delay_time = 0.2f;
+    private float spawn_delay = 0.1f;
+    private float delay_time = 0.1f;
     private float return_time = 5.0f;
     public List<int> fruit_hit;
     public List<int> fruit_miss;
@@ -50,6 +52,7 @@ public class GameController : MonoBehaviour
     private GameObject variable_holder;
     private TextMeshProUGUI timer_text;
     private TextMeshProUGUI countdown_text;
+    private TextMeshProUGUI points_text;
 
     void clearWeapons() {
         if(left_hand.transform.Find("Weapon") != null)
@@ -117,11 +120,17 @@ public class GameController : MonoBehaviour
         } else {
             fruit_miss.Add(type);
         }
+
+        GameObject added_point = Instantiate(add_point, Vector3.zero, Quaternion.identity, whole_ui.transform);
+        added_point.GetComponent<AddPointScript>().points = value;
+
+        points_text.text = "" + score;
     }
 
     void Start() {
         countdown_text = countdown.GetComponent<TextMeshProUGUI>();
         timer_text = timer.GetComponent<TextMeshProUGUI>();
+        points_text = points.GetComponent<TextMeshProUGUI>();
         variable_holder = GameObject.FindGameObjectWithTag("VariableHolder");
         game_state = GAME_STATE.COUNTDOWN;
         fruit_hit = new List<int>();
@@ -216,12 +225,12 @@ public class GameController : MonoBehaviour
 
             if(fruit_miss.Count >= 1) {
                 GameObject type = fruit[fruit_miss[0]];
-                Instantiate(type, new Vector3(-2.828427f, 10, 2.828427f), Quaternion.identity);
+                Instantiate(type, new Vector3(-2.828427f, 14, 2.828427f), Quaternion.identity);
                 fruit_miss.RemoveAt(0);
             }
             if(fruit_hit.Count >= 1) {
                 GameObject type = fruit[fruit_hit[0]];
-                Instantiate(type, new Vector3(2.828427f, 10, 2.828427f), Quaternion.identity);
+                Instantiate(type, new Vector3(2.828427f, 14, 2.828427f), Quaternion.identity);
                 fruit_hit.RemoveAt(0);
             }
 
