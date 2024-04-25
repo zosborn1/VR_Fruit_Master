@@ -7,7 +7,7 @@ public class FruitGeneration : MonoBehaviour
     [Range(1, 100)]
     public int frequency;
 
-    private int range;
+    private int currentRange;
     private GameObject game_controller;
 
     private int force_vertical = 240;
@@ -38,7 +38,7 @@ public class FruitGeneration : MonoBehaviour
     void Start()
     {
         game_controller = GameObject.FindGameObjectWithTag("GameController");
-        range = game_controller.GetComponent<GameController>().range;
+        currentRange = VariableHolder.range;
 
         all_fruits = new GameObject[]{watermelon};
     }
@@ -46,11 +46,11 @@ public class FruitGeneration : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        range = game_controller.GetComponent<GameController>().range;
+        currentRange = VariableHolder.range;
 
         if(Random.Range(1, 1000) <= frequency) {
             GameObject fruit = all_fruits[Random.Range(0,all_fruits.Length-1)];
-            double spawn_angle = (double)(Random.Range(0, range)) - (double)range/2.0;
+            double spawn_angle = (double)(Random.Range(0, currentRange)) - (double)currentRange/2.0;
             int target_angle = Random.Range(0, 30);
 
             CreateFruit(fruit, spawn_angle);

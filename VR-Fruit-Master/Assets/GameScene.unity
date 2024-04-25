@@ -577,6 +577,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3263899264927682373, guid: b0e53b678557b4ea6a1bd3675d31fe3b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386109219586659278, guid: b0e53b678557b4ea6a1bd3675d31fe3b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4543557253391748490, guid: b0e53b678557b4ea6a1bd3675d31fe3b, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4659501779164777041, guid: b0e53b678557b4ea6a1bd3675d31fe3b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5009121224900283577, guid: b0e53b678557b4ea6a1bd3675d31fe3b, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
@@ -596,6 +612,26 @@ PrefabInstance:
     - target: {fileID: 5346629211179340669, guid: b0e53b678557b4ea6a1bd3675d31fe3b, type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5932542138243593603, guid: b0e53b678557b4ea6a1bd3675d31fe3b, type: 3}
+      propertyPath: m_ModelPrefab
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5932542139677963619, guid: b0e53b678557b4ea6a1bd3675d31fe3b, type: 3}
+      propertyPath: m_ModelPrefab
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6865161378767898206, guid: b0e53b678557b4ea6a1bd3675d31fe3b, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7013938901666999880, guid: b0e53b678557b4ea6a1bd3675d31fe3b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8201337679547761561, guid: b0e53b678557b4ea6a1bd3675d31fe3b, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

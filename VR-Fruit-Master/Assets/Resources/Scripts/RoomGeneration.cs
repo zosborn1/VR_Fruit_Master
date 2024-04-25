@@ -22,7 +22,7 @@ public class RoomGeneration : MonoBehaviour
     public GameObject short_right_edge_prefab;
 
     private GameObject game_controller;
-    private int range;
+    private int currentRange;
     private int segments;
 
     GameObject createWall(GameObject prefab, int distance) {
@@ -42,7 +42,7 @@ public class RoomGeneration : MonoBehaviour
 
         clearWalls();
 
-        if(range <= 345) {
+        if(currentRange <= 345) {
             // creating left edge of walls
             createWall(short_left_edge_prefab, 3);
             createWall(tall_left_edge_prefab, 5);
@@ -95,8 +95,9 @@ public class RoomGeneration : MonoBehaviour
     void Start() 
     {
         game_controller = GameObject.FindGameObjectWithTag("GameController");
-        range = game_controller.GetComponent<GameController>().range;
-        segments = range/15;
+        //range = game_controller.GetComponent<GameController>().range;\
+        currentRange = VariableHolder.range;
+        segments = currentRange/15;
 
         updateWalls();
         updateSkybox();
@@ -105,8 +106,7 @@ public class RoomGeneration : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        range = game_controller.GetComponent<GameController>().range;
-        int segments_updated = range/15;
+        int segments_updated = currentRange/15;
 
         if(segments_updated != segments) {
             segments = segments_updated;
