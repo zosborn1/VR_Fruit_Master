@@ -2,47 +2,63 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    [Range(60, 360)]
+    public enum GAME_STATE {COUNTDOWN, GAME_PLAY, GAME_DONE, DISPLAY_END, RETURN_MENU};
+
+    [Header("VariableHolder")]
     public int range;
+    public string left_weapon;
+    public string right_weapon;
 
-    private string left_weapon;
-    private string right_weapon;
-
+    [Header("Prefabs")]
     public GameObject weapon1;
     public GameObject weapon2;
     public GameObject weapon3;
     public GameObject weapon4;
+    public GameObject[] fruit;
+    public GameObject add_point;
 
-    public GameObject fruit_generation;
-
+    [Header("UI/Player")]
+    public GameObject whole_ui;
     public GameObject timer;
     public GameObject countdown;
     public GameObject heart1;
     public GameObject heart2;
     public GameObject heart3;
     public GameObject points;
-
-    private GameObject variable_holder;
     public GameObject left_hand;
     public GameObject right_hand;
+    public GameObject end_display;
+    public GameObject end_score;
 
+    [Header("Scene Objects")]
+    public GameObject fruit_generation;
+    public GameObject wall_generation;
+
+    [Header("Other")]
+    public int score = 0;
+    public GAME_STATE game_state;
+    private float time_left = 90.0f;
+    private float start_time = 5.0f;
+    private float spawn_delay = 0.1f;
+    private float delay_time = 0.1f;
+    private float return_time = 5.0f;
+    public List<int> fruit_hit;
+    public List<int> fruit_miss;
+
+    private GameObject variable_holder;
     private TextMeshProUGUI timer_text;
     private TextMeshProUGUI countdown_text;
-
-    public int score = 0;
-    public float time_left = 90.0f;
-    public float start_time = 5.0f;
-
-    public bool game_start = false;
+    private TextMeshProUGUI points_text;
 
     void clearWeapons() {
-        if(!left_hand.transform.Find("Weapon"))
-            Destroy(left_hand.transform.Find("Weapon"));
-        if(!right_hand.transform.Find("Weapon"))
-            Destroy(right_hand.transform.Find("Weapon"));
+        if(left_hand.transform.Find("Weapon") != null)
+            Destroy(left_hand.transform.Find("Weapon").gameObject);
+        if(right_hand.transform.Find("Weapon") != null)
+            Destroy(right_hand.transform.Find("Weapon").gameObject);
     }
 
     void giveWeapon(GameObject prefab, bool is_left) {
@@ -96,14 +112,34 @@ public class GameController : MonoBehaviour
         }
     }
 
+    public void updateScore(int value, bool hit, int type) {
+        score += value;
+        score = Mathf.Max(0, score);
+        if(hit) {
+            fruit_hit.Add(type);
+        } else {
+            fruit_miss.Add(type);
+        }
+
+        GameObject added_point = Instantiate(add_point, Vector3.zero, Quaternion.identity, whole_ui.transform);
+        added_point.GetComponent<AddPointScript>().points = value;
+
+        points_text.text = "" + score;
+    }
+
     void Start() {
         countdown_text = countdown.GetComponent<TextMeshProUGUI>();
         timer_text = timer.GetComponent<TextMeshProUGUI>();
+        points_text = points.GetComponent<TextMeshProUGUI>();
         variable_holder = GameObject.FindGameObjectWithTag("VariableHolder");
+        game_state = GAME_STATE.COUNTDOWN;
+        fruit_hit = new List<int>();
+        fruit_miss = new List<int>();
 
-        range = variable_holder.GetComponent<VariableHolder>().range;
+        // range = variable_holder.GetComponent<VariableHolder>().range;
 
-        switch(variable_holder.GetComponent<VariableHolder>().left_weapon) {
+        // switch(variable_holder.GetComponent<VariableHolder>().left_weapon) {
+        switch(left_weapon) {
             case "weapon1":
                 giveWeapon(weapon1, true);
                 break;
@@ -119,7 +155,8 @@ public class GameController : MonoBehaviour
             default:
                 break;
         }
-        switch(variable_holder.GetComponent<VariableHolder>().right_weapon) {
+        // switch(variable_holder.GetComponent<VariableHolder>().right_weapon) {
+        switch(right_weapon) {
             case "weapon1":
                 giveWeapon(weapon1, false);
                 break;
@@ -137,30 +174,99 @@ public class GameController : MonoBehaviour
         }
     }
 
-    void Update() {
-        if(!game_start) {
-            start_time -= Time.deltaTime;
-            updateCountdown();
+    void countDown() {
+        start_time -= Time.deltaTime;
+        updateCountdown();
 
-            if(start_time <= 0) {
-                fruit_generation.SetActive(true);
+        if(start_time <= 0) {
+            fruit_generation.SetActive(true);
+            timer.SetActive(true);
+            points.SetActive(true);
+            heart1.SetActive(true);
+            heart2.SetActive(true);
+            heart3.SetActive(true);
+            countdown.SetActive(false);
 
-                timer.SetActive(true);
-                points.SetActive(true);
-                heart1.SetActive(true);
-                heart2.SetActive(true);
-                heart3.SetActive(true);
-                countdown.SetActive(false);
-                game_start = true;
-            }
+            game_state = GAME_STATE.GAME_PLAY;
+        }
+    } 
+
+    void gamePlay() {
+        time_left -= Time.deltaTime;
+
+        if(time_left >= 0) {
+            updateTime();
         } else {
-            time_left -= Time.deltaTime;
-            
-            if(time_left >= 0) {
-                updateTime();
-            } else {
-                fruit_generation.SetActive(false);
+            fruit_generation.SetActive(false);
+            game_state = GAME_STATE.GAME_DONE;
+        }
+    }
+
+    void gameDone() {
+        clearWeapons();
+        timer.SetActive(false);
+        points.SetActive(false);
+        heart1.SetActive(false);
+        heart2.SetActive(false);
+        heart3.SetActive(false);
+        wall_generation.SetActive(false);
+
+        end_display.SetActive(true);
+        end_score.GetComponent<TextMeshProUGUI>().text = "" + score;
+
+        game_state = GAME_STATE.DISPLAY_END;
+    }
+
+    void displayEnd() {
+        delay_time -= Time.deltaTime;
+
+        if(delay_time <= 0) {
+            delay_time = spawn_delay;
+
+            if(fruit_miss.Count >= 1) {
+                GameObject type = fruit[fruit_miss[0]];
+                Instantiate(type, new Vector3(-2.828427f, 14, 2.828427f), Quaternion.identity);
+                fruit_miss.RemoveAt(0);
             }
+            if(fruit_hit.Count >= 1) {
+                GameObject type = fruit[fruit_hit[0]];
+                Instantiate(type, new Vector3(2.828427f, 14, 2.828427f), Quaternion.identity);
+                fruit_hit.RemoveAt(0);
+            }
+
+            if(fruit_miss.Count == 0 && fruit_hit.Count == 0) {
+                game_state = GAME_STATE.RETURN_MENU;
+            }
+        }
+    }
+
+    void returnMenu() {
+        return_time -= Time.deltaTime;
+
+        if(return_time <= 0) {
+            SceneManager.LoadScene("StartScene");
+        }
+    }
+
+    void Update() {
+        switch(game_state) {
+            case GAME_STATE.COUNTDOWN:
+                countDown();
+                break;
+            case GAME_STATE.GAME_PLAY:
+                gamePlay();
+                break;
+            case GAME_STATE.GAME_DONE:
+                gameDone();
+                break;
+            case GAME_STATE.DISPLAY_END:
+                displayEnd();
+                break;
+            case GAME_STATE.RETURN_MENU:
+                returnMenu();
+                break;
+            default:
+                break;
         }
     }
 }

@@ -12,6 +12,7 @@ TagManager:
   - Range Selector Tag
   - Bat
   - SmashedFruit
+  - Hand
   layers:
   - Default
   - TransparentFX

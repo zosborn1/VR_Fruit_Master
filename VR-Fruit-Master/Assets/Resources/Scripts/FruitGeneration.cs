@@ -4,17 +4,15 @@ using UnityEngine;
 
 public class FruitGeneration : MonoBehaviour
 {
-    [Range(1, 100)]
-    public int frequency;
 
-    private int currentRange;
+    private int range;
+
     private GameObject game_controller;
 
-    private int force_vertical = 240;
+    private int force_vertical = 200;
     private int force_horizontal = 90;
 
-    public GameObject watermelon;
-    private GameObject[] all_fruits;
+    public GameObject[] fruits;
 
     void CreateFruit(GameObject fruit_type, double spawn_angle) {
         spawn_angle = spawn_angle/180.0*System.Math.PI + System.Math.PI/2.0;
@@ -26,21 +24,24 @@ public class FruitGeneration : MonoBehaviour
         fruit.transform.Rotate(Random.Range(0, 359), Random.Range(0, 359), Random.Range(0, 359));
 
         float random = (float)(Random.Range(-100, 100))/100.0f;
-        double target = spawn_angle - System.Math.PI + random*System.Math.PI/6.0f;
+        double target = spawn_angle - System.Math.PI + random*System.Math.PI/12.0f;
 
     
         float target_x = (float)System.Math.Cos(target)*4;
         float target_z = (float)System.Math.Sin(target)*4;
-        fruit.GetComponent<Rigidbody>().AddForce(target_x*force_horizontal, force_vertical + Random.Range(0, 20), target_z*force_horizontal);
+        fruit.GetComponent<Rigidbody>().AddForce(target_x*force_horizontal, force_vertical + Random.Range(0, 30), target_z*force_horizontal);
     }
 
     // Start is called before the first frame update
     void Start()
     {
         game_controller = GameObject.FindGameObjectWithTag("GameController");
-        currentRange = VariableHolder.range;
+
+        range = game_controller.GetComponent<GameController>().range;
+
 
         all_fruits = new GameObject[]{watermelon};
+
     }
 
     // Update is called once per frame
@@ -48,9 +49,11 @@ public class FruitGeneration : MonoBehaviour
     {
         currentRange = VariableHolder.range;
 
-        if(Random.Range(1, 1000) <= frequency) {
-            GameObject fruit = all_fruits[Random.Range(0,all_fruits.Length-1)];
-            double spawn_angle = (double)(Random.Range(0, currentRange)) - (double)currentRange/2.0;
+        if(Random.Range(0, 15000) <= range) {
+            GameObject fruit = fruits[Random.Range(0,fruits.Length-1)];
+
+            double spawn_angle = (double)(Random.Range(0, range)) - (double)range/2.0;
+
             int target_angle = Random.Range(0, 30);
 
             CreateFruit(fruit, spawn_angle);
