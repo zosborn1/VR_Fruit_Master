@@ -17,7 +17,9 @@ public class GameStartMenu : MonoBehaviour
 
     void Start()
     {
-
+        print(VariableHolder.range);
+        print(VariableHolder.left_weapon);
+        print(VariableHolder.right_weapon);
         VariableHolder.range = 60;
         VariableHolder.left_weapon = 0;
         VariableHolder.right_weapon = 0;

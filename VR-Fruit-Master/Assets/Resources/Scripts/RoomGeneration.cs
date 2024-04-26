@@ -85,6 +85,8 @@ public class RoomGeneration : MonoBehaviour
                 }
             }
         }
+
+        this.gameObject.transform.localScale = new Vector3(1.25f, 1.0f, 1.25f);
     }
 
     void updateSkybox() {
@@ -95,27 +97,10 @@ public class RoomGeneration : MonoBehaviour
     void Start() 
     {
         game_controller = GameObject.FindGameObjectWithTag("GameController");
-        //range = game_controller.GetComponent<GameController>().range;\
         currentRange = VariableHolder.range;
         segments = currentRange/15;
 
         updateWalls();
         updateSkybox();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        int segments_updated = currentRange/15;
-
-        if(segments_updated != segments) {
-            segments = segments_updated;
-            updateWalls();
-        }
-
-        if(skybox != cur_skybox) {
-            updateSkybox();
-            cur_skybox = skybox;
-        }
     }
 }

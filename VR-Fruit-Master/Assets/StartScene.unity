@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.07170968, g: 0.20043603, b: 0.38065118, a: 1}
+  m_IndirectSpecularColor: {r: 0.07170497, g: 0.1998818, b: 0.38022545, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 4b2658d58c6f2174fa4d4f0e446ef11d, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -1907,7 +1907,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &484563349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5144,6 +5144,14 @@ PrefabInstance:
     - target: {fileID: 2054267087471625936, guid: 2ebe3ea021f106846843b02feb1ad97c, type: 3}
       propertyPath: m_Name
       value: Room
+      objectReference: {fileID: 0}
+    - target: {fileID: 8225590797590749080, guid: 2ebe3ea021f106846843b02feb1ad97c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8225590797590749080, guid: 2ebe3ea021f106846843b02feb1ad97c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 8225590797590749080, guid: 2ebe3ea021f106846843b02feb1ad97c, type: 3}
       propertyPath: m_LocalPosition.x
