@@ -36,7 +36,7 @@ public class GameController : MonoBehaviour
     [Header("Other")]
     public int score = 0;
     public GAME_STATE game_state;
-    private float time_left = 90.0f;
+    private float time_left = 30.0f;
     private float start_time = 5.0f;
     private float spawn_delay = 0.1f;
     private float delay_time = 0.1f;
