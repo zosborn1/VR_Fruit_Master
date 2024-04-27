@@ -19,14 +19,13 @@ public class AddPointScript : MonoBehaviour
             text.text = "" + points;
             text.color = new Color(255, 50, 50, 255);
         }
-        this.gameObject.transform.localPosition = new Vector3(460, 120, 0);
+        this.gameObject.transform.localPosition = new Vector3(0, -100, 0);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(this.gameObject.transform.localPosition.y >= 170) {
-            print("destroy");
+        if(this.gameObject.transform.localPosition.y >= -50) {
             Destroy(this.gameObject);
         } else {
             this.gameObject.transform.localPosition = this.gameObject.transform.localPosition + new Vector3(0, Time.deltaTime*50, 0);

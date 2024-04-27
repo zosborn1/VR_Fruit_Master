@@ -36,13 +36,14 @@ public class GameController : MonoBehaviour
     [Header("Other")]
     public int score = 0;
     public GAME_STATE game_state;
-    private float time_left = 90.0f;
-    private float start_time = 5.0f;
-    private float spawn_delay = 0.1f;
-    private float delay_time = 0.1f;
-    private float return_time = 5.0f;
     public List<int> fruit_hit;
     public List<int> fruit_miss;
+
+    private float global_time;
+    private float countdown_time = 5.5f;
+    private float game_play_time = 45.0f;
+    private float display_end_delay = 0.1f;
+    private float return_menu_time = 5.0f;
 
     private TextMeshProUGUI timer_text;
     private TextMeshProUGUI countdown_text;
@@ -69,20 +70,16 @@ public class GameController : MonoBehaviour
     }
 
     void updateCountdown() {
-        int sec = Mathf.FloorToInt(start_time);
+        int sec = Mathf.FloorToInt(global_time);
         countdown_text.text = string.Format("{00}", sec);
     }
 
     void updateTime() {
-        int min = Mathf.FloorToInt(time_left/60);
-        int sec = Mathf.FloorToInt(time_left%60);
+        int min = Mathf.FloorToInt(global_time/60);
+        int sec = Mathf.FloorToInt(global_time%60);
 
         if(min >= 1) {
-            if(sec >= 10) {
-                timer_text.text = string.Format("1:{00}", sec);
-            } else {
-                timer_text.text = string.Format("1:0{0}", sec);
-            }
+            timer_text.text = min + ":" + (""+sec).PadLeft(2, '0');
         } else {
             if(sec <= 30) {
                 timer_text.color = new Color(240, 50, 0, 255);
@@ -118,10 +115,13 @@ public class GameController : MonoBehaviour
         GameObject added_point = Instantiate(add_point, Vector3.zero, Quaternion.identity, whole_ui.transform);
         added_point.GetComponent<AddPointScript>().points = value;
 
-        points_text.text = "" + score;
+        points_text.text = ("" + score).PadLeft(4, '0');
     }
 
     void Start() {
+        Time.timeScale = 0.8f;
+        global_time = countdown_time;
+
         countdown_text = countdown.GetComponent<TextMeshProUGUI>();
         timer_text = timer.GetComponent<TextMeshProUGUI>();
         points_text = points.GetComponent<TextMeshProUGUI>();
@@ -129,9 +129,6 @@ public class GameController : MonoBehaviour
         fruit_hit = new List<int>();
         fruit_miss = new List<int>();
 
-        // range = variable_holder.GetComponent<VariableHolder>().range;
-
-        // switch(variable_holder.GetComponent<VariableHolder>().left_weapon) {
         switch(VariableHolder.left_weapon) {
             case 1:
                 giveWeapon(weapon1, true);
@@ -145,7 +142,7 @@ public class GameController : MonoBehaviour
             default:
                 break;
         }
-        // switch(variable_holder.GetComponent<VariableHolder>().right_weapon) {
+
         switch(VariableHolder.right_weapon) {
             case 1:
                 giveWeapon(weapon1, false);
@@ -162,10 +159,9 @@ public class GameController : MonoBehaviour
     }
 
     void countDown() {
-        start_time -= Time.deltaTime;
         updateCountdown();
 
-        if(start_time <= 0) {
+        if(global_time <= 0) {
             fruit_generation.SetActive(true);
             timer.SetActive(true);
             points.SetActive(true);
@@ -175,13 +171,12 @@ public class GameController : MonoBehaviour
             countdown.SetActive(false);
 
             game_state = GAME_STATE.GAME_PLAY;
+            global_time = game_play_time;
         }
     } 
 
     void gamePlay() {
-        time_left -= Time.deltaTime;
-
-        if(time_left >= 0) {
+        if(global_time >= 0) {
             updateTime();
         } else {
             fruit_generation.SetActive(false);
@@ -201,14 +196,17 @@ public class GameController : MonoBehaviour
         end_display.SetActive(true);
         end_score.GetComponent<TextMeshProUGUI>().text = "" + score;
 
+        if(score >= VariableHolder.highscore) {
+            VariableHolder.highscore = score;
+        }
+
         game_state = GAME_STATE.DISPLAY_END;
+        
     }
 
     void displayEnd() {
-        delay_time -= Time.deltaTime;
-
-        if(delay_time <= 0) {
-            delay_time = spawn_delay;
+        if(global_time <= 0) {
+            global_time = display_end_delay;
 
             if(fruit_miss.Count >= 1) {
                 GameObject type = fruit[fruit_miss[0]];
@@ -223,19 +221,20 @@ public class GameController : MonoBehaviour
 
             if(fruit_miss.Count == 0 && fruit_hit.Count == 0) {
                 game_state = GAME_STATE.RETURN_MENU;
+                global_time = return_menu_time;
             }
         }
     }
 
     void returnMenu() {
-        return_time -= Time.deltaTime;
-
-        if(return_time <= 0) {
+        if(global_time <= 0) {
             SceneManager.LoadScene("StartScene");
         }
     }
 
     void Update() {
+        global_time -= Time.deltaTime*1.25f;
+
         switch(game_state) {
             case GAME_STATE.COUNTDOWN:
                 countDown();
