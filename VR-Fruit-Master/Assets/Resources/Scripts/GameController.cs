@@ -41,7 +41,7 @@ public class GameController : MonoBehaviour
 
     private float global_time;
     private float countdown_time = 5.5f;
-    private float game_play_time = 90.0f;
+    private float game_play_time = 45.0f;
     private float display_end_delay = 0.1f;
     private float return_menu_time = 5.0f;
 
@@ -195,6 +195,10 @@ public class GameController : MonoBehaviour
 
         end_display.SetActive(true);
         end_score.GetComponent<TextMeshProUGUI>().text = "" + score;
+
+        if(score >= VariableHolder.highscore) {
+            VariableHolder.highscore = score;
+        }
 
         game_state = GAME_STATE.DISPLAY_END;
         
