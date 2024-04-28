@@ -13,6 +13,7 @@ TagManager:
   - Bat
   - SmashedFruit
   - Hand
+  - Axe
   layers:
   - Default
   - TransparentFX
