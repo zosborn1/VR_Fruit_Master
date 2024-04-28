@@ -1972,7 +1972,7 @@ PrefabInstance:
     - target: {fileID: 6974797725478031508, guid: 9cb7cba434a3d194baf9a05e1ee75427, type: 3}
       propertyPath: fruits.Array.data[3]
       value: 
-      objectReference: {fileID: 8977602700330381499, guid: 62b7646e799694e9fb26fe3ac92be897, type: 3}
+      objectReference: {fileID: 3832762740320071518, guid: 79425dd7708964a1d9fd2cfe4e44980e, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
