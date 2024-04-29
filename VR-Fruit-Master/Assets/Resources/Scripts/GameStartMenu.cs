@@ -29,9 +29,14 @@ public class GameStartMenu : MonoBehaviour
         }
 
         highscore.GetComponent<TextMeshProUGUI>().text = "Highscore: " + PlayerPrefs.GetInt("highscore", 0);
+
         rangeSlider.value = (PlayerPrefs.GetInt("range", 1)-30)/30;
         leftWeaponDropdown.value = PlayerPrefs.GetInt("left_weapon", 0);
         rightWeaponDropdown.value = PlayerPrefs.GetInt("right_weapon", 0);
+
+        VariableHolder.range = (int)rangeSlider.value*30 + 30; 
+        VariableHolder.left_weapon = leftWeaponDropdown.value;
+        VariableHolder.right_weapon = rightWeaponDropdown.value;
     }
 
     void Update() {

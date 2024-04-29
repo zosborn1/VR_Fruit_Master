@@ -46,9 +46,10 @@ public class FruitScript : MonoBehaviour
     }
 
     void setupSmashed(GameObject component, Vector3 velocity, Vector3 explosion_position) {
+        component.tag = "SmashedFruit";
         Rigidbody rigid = component.GetComponent<Rigidbody>();
         rigid.velocity = velocity;
-        rigid.AddExplosionForce(force, explosion_position, 10);
+        // rigid.AddExplosionForce(force, explosion_position, 10);
         component.GetComponent<Rigidbody>().velocity = velocity;
     }
 
@@ -81,21 +82,18 @@ public class FruitScript : MonoBehaviour
                 changePoints(100, true);
                 sliceFruit(collision);
                 break;
-            default:
-                changePoints(-10, false);
-                smashFruit();
-                break;
         }
     }
 
     void OnCollisionEnter(Collision collision) {
         switch(collision.gameObject.tag) {
             case "Player":
-                changePoints(-20, false);
+                changePoints(-50, false);
+                game_controller.GetComponent<GameController>().loseHeart();
                 smashFruit();
                 break;
             case "Hand":
-                changePoints(10, true);
+                changePoints(100, true);
                 smashFruit();
                 break;
             case "Bat":
@@ -103,9 +101,11 @@ public class FruitScript : MonoBehaviour
                 smashFruit();
                 break;
             case "Fruit":
+            case "SlicedFruit":
+            case "SmashedFruit":
                 break;
             default:
-                changePoints(-10, false);
+                changePoints(-25, false);
                 smashFruit();
                 break;
         }

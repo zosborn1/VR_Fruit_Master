@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 598944803688304691}
   - component: {fileID: 7677941850193496581}
   - component: {fileID: 7173409725310002011}
+  - component: {fileID: 6121554155080829612}
   m_Layer: 0
   m_Name: pineapple_whole_script
   m_TagString: Fruit
@@ -98,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98861b363e8f9df4dacf5d4c74d50075, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
+  type: 2
   cross_section: {fileID: 2100000, guid: ee82f60f75c1c924087cbde1d7784440, type: 2}
   force: 500
   smashed_version: {fileID: 6506607851410347512, guid: 575727c469ea044998d5ccae0179f398, type: 3}
@@ -146,8 +147,31 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -4841805544897169932, guid: 3b7fe8199894f4be68d1fd83d08f221e, type: 3}
+--- !u!136 &6121554155080829612
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2394358763568280159}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.06
+  m_Height: 0.175
+  m_Direction: 2
+  m_Center: {x: -0.0007036589, y: 0.0010191316, z: 0.08}

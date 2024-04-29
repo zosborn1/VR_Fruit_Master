@@ -41,7 +41,7 @@ public class GameController : MonoBehaviour
 
     private float global_time;
     private float countdown_time = 5.5f;
-    private float game_play_time = 45.0f;
+    private float game_play_time = 60.0f;
     private float display_end_delay = 0.1f;
     private float return_menu_time = 5.0f;
 
@@ -100,6 +100,17 @@ public class GameController : MonoBehaviour
                 }
             }
             timer_text.text = string.Format("{00}", sec);
+        }
+    }
+
+    public void loseHeart() {
+        if(heart1.active == true) {
+            heart1.SetActive(false);
+        } else if(heart2.active == true) {
+            heart2.SetActive(false);
+        } else if(heart3.active == true) {
+            global_time = display_end_delay;
+            game_state = GAME_STATE.GAME_DONE;
         }
     }
 
@@ -179,13 +190,13 @@ public class GameController : MonoBehaviour
         if(global_time >= 0) {
             updateTime();
         } else {
-            fruit_generation.SetActive(false);
             game_state = GAME_STATE.GAME_DONE;
         }
     }
 
     void gameDone() {
         clearWeapons();
+        fruit_generation.SetActive(false);
         timer.SetActive(false);
         points.SetActive(false);
         heart1.SetActive(false);

@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98861b363e8f9df4dacf5d4c74d50075, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
+  type: 2
   cross_section: {fileID: 2100000, guid: ee82f60f75c1c924087cbde1d7784440, type: 2}
   force: 500
   smashed_version: {fileID: 3982305613674029450, guid: 1e359f2f609cb4d109424e81bf07994c, type: 3}
