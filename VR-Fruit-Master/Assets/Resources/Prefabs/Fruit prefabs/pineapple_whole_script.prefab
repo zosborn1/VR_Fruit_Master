@@ -102,7 +102,7 @@ MonoBehaviour:
   type: 2
   cross_section: {fileID: 2100000, guid: ee82f60f75c1c924087cbde1d7784440, type: 2}
   force: 500
-  smashed_version: {fileID: 6511501638355575690, guid: 0e348b7bc2525492cbf883592f00c4b1, type: 3}
+  smashed_version: {fileID: 6506607851410347512, guid: 575727c469ea044998d5ccae0179f398, type: 3}
 --- !u!54 &7677941850193496581
 Rigidbody:
   m_ObjectHideFlags: 0
