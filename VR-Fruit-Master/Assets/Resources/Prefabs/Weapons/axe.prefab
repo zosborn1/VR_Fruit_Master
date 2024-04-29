@@ -117,7 +117,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1389778962276744378}
   m_Layer: 0
-  m_Name: Axe
+  m_Name: axe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -131,16 +131,16 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2468086882695308428}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.19080894, y: 0, z: 0, w: 0.9816273}
-  m_LocalPosition: {x: -0.054, y: 0.374, z: 0.108}
-  m_LocalScale: {x: 6, y: 6, z: 6}
+  m_LocalRotation: {x: 0.1349223, y: 0.6941153, z: -0.1349223, w: 0.6941153}
+  m_LocalPosition: {x: 0.063, y: 0.255, z: 0.041}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 121325107322753321}
   - {fileID: 126557931960282294}
   - {fileID: 884141571956847140}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 22, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 22, y: 90, z: 0}
 --- !u!1 &5680645199476704242
 GameObject:
   m_ObjectHideFlags: 0
