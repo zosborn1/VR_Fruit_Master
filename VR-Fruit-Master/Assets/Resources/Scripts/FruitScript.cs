@@ -3,14 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using EzySlice;
 
+
 public class FruitScript : MonoBehaviour
 {
+
     public int type;
     public Material cross_section;
     public float force = 500;
     public GameObject smashed_version;
     
     private GameObject game_controller;
+
+
 
     void changePoints(int point, bool hit) {
         game_controller.GetComponent<GameController>().updateScore(point, hit, type);

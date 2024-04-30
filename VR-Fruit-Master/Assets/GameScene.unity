@@ -2406,6 +2406,7 @@ GameObject:
   - component: {fileID: 1219032117}
   - component: {fileID: 1219032116}
   - component: {fileID: 1219032115}
+  - component: {fileID: 1219032118}
   m_Layer: 0
   m_Name: Hand
   m_TagString: Hand
@@ -2443,7 +2444,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -2499,6 +2500,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1219032113}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1219032118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1219032113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4b34252d468e4d478be9d74606c74f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intensity: 0.87
+  duration: 0.3
 --- !u!1001 &1256647818
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3661,6 +3676,7 @@ GameObject:
   - component: {fileID: 1905563827}
   - component: {fileID: 1905563826}
   - component: {fileID: 1905563825}
+  - component: {fileID: 1905563828}
   m_Layer: 0
   m_Name: Hand
   m_TagString: Hand
@@ -3698,7 +3714,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -3754,6 +3770,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1905563823}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1905563828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905563823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4b34252d468e4d478be9d74606c74f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intensity: 0.893
+  duration: 0.3
 --- !u!1 &1950480196
 GameObject:
   m_ObjectHideFlags: 0
