@@ -147,7 +147,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98861b363e8f9df4dacf5d4c74d50075, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
+  type: 1
   cross_section: {fileID: 2100000, guid: ee82f60f75c1c924087cbde1d7784440, type: 2}
   force: 500
   smashed_version: {fileID: 4393256232429517471, guid: f374271ca31364fc19fd4409d5a27d90, type: 3}
+  value: 200
+  slice_audios:
+  - {fileID: 8300000, guid: 5c0be33f33998b247b06221672349bd0, type: 3}
+  - {fileID: 8300000, guid: 0fd908d95d6dfad4191aa8a136fa2e36, type: 3}
+  - {fileID: 8300000, guid: 2b8ffc719ed249842af8a0a6f6b43f9e, type: 3}
+  smash_audio: {fileID: 8300000, guid: 671461630d012f2449c8bd5db237f7e5, type: 3}
+  audio_instance: {fileID: 7604764993469913643, guid: 403787c3d1e85df4b87f5c5a20b94762, type: 3}
