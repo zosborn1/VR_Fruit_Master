@@ -15,6 +15,7 @@ public class GameStartMenu : MonoBehaviour
     public GameObject rangeTitle;
     public GameObject highscore;
     public GameObject new_display;
+    public GameObject titlecard;
 
     private float fluctuate = 0.0f;
     private TextMeshProUGUI new_text;
@@ -40,8 +41,10 @@ public class GameStartMenu : MonoBehaviour
     }
 
     void Update() {
-        fluctuate += 0.025f;
-        new_display.transform.localScale = new Vector3(1.25f + Mathf.Cos(fluctuate)/4.0f, 1.25f + Mathf.Cos(fluctuate)/4.0f, 1);
+        fluctuate += Time.deltaTime*0.5f;
+        new_display.transform.localScale = new Vector3(1.25f + Mathf.Cos(fluctuate*4.0f)/4.0f, 1.25f + Mathf.Cos(fluctuate*4.0f)/4.0f, 1);
+
+        titlecard.transform.localScale = new Vector3(2.25f + Mathf.Cos(fluctuate)/4.0f, 2.25f + Mathf.Cos(fluctuate)/4.0f, 1);
     }
 
     public void StartGame()

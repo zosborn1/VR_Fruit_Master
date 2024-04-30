@@ -1254,21 +1254,20 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Destroying fruit    (+100)
+  m_text: 'Watermelon         (+100)
+
+    Orange               (+200)
+
+    Peach                
+    (+250)
 
     Hit by fruit    (-50, -1HP)
 
-    Miss
-    fruit               (-25)
+    Miss fruit               (-25)
 
 
-    Increasing range also increases fruit spawn rate
-    proportionally.
-
-
-    Remember that you are penalized for missing fruit!
-
-'
+    Increasing
+    range also increases fruit spawn rate proportionally.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3658,10 +3657,10 @@ MonoBehaviour:
 
     Sounds Resource (Fruit SFX)
 
-    name
+    Nintendo
     (Menu BGM)
 
-    name (Game BGM)
+    Capcom (Game BGM)
 
 '
   m_isRightToLeft: 0
@@ -4337,6 +4336,7 @@ MonoBehaviour:
   rangeTitle: {fileID: 2084296513}
   highscore: {fileID: 965007616}
   new_display: {fileID: 858240038}
+  titlecard: {fileID: 2090095143}
 --- !u!1 &1324780474
 GameObject:
   m_ObjectHideFlags: 0
@@ -5780,9 +5780,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 5dcb92c8d1abfee46a3c059dfc2edb56, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.147
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -6429,6 +6429,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 300535419444153869, guid: b0e53b678557b4ea6a1bd3675d31fe3b, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1597913211589556963, guid: b0e53b678557b4ea6a1bd3675d31fe3b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

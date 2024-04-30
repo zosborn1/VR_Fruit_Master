@@ -9,12 +9,26 @@ public class FruitScript : MonoBehaviour
     public Material cross_section;
     public float force = 500;
     public GameObject smashed_version;
+    public int value;
+
+    public AudioClip[] slice_audios;
+    public AudioClip smash_audio;
+    public GameObject audio_instance;
     
     private GameObject game_controller;
 
     void changePoints(int point, bool hit) {
         game_controller.GetComponent<GameController>().updateScore(point, hit, type);
-    }   
+    }
+
+    void playAudio(Vector3 position, bool is_slice) {
+        GameObject creation = Instantiate(audio_instance, position, Quaternion.identity);
+        if(is_slice) {
+            creation.GetComponent<AudioSource>().clip = slice_audios[Random.Range(0, slice_audios.Length)];
+        } else {
+            creation.GetComponent<AudioSource>().clip = smash_audio;
+        }
+    }
 
     void setupSliced(GameObject component, Vector3 velocity) {
         component.tag = "SlicedFruit";
@@ -23,7 +37,7 @@ public class FruitScript : MonoBehaviour
         MeshCollider collider = component.AddComponent<MeshCollider>();
         collider.convex = true;
         rigid.velocity = velocity;
-        rigid.AddExplosionForce(force, component.transform.position, 1);
+        // rigid.AddExplosionForce(force, component.transform.position, 1);
         component.AddComponent<DecayScript>();
     }
 
@@ -42,6 +56,8 @@ public class FruitScript : MonoBehaviour
             setupSliced(lowerHull, velocity);
         }
         
+        playAudio(this.gameObject.transform.position, true);
+
         Destroy(this.gameObject);
     }
 
@@ -63,7 +79,10 @@ public class FruitScript : MonoBehaviour
         foreach(Transform child in creation.transform) {
             setupSmashed(child.gameObject, velocity, creation.transform.position);
         }
+
         creation.transform.DetachChildren();
+        playAudio(this.gameObject.transform.position, false);
+
         Destroy(creation);
         Destroy(this.gameObject);
     }
@@ -75,11 +94,11 @@ public class FruitScript : MonoBehaviour
     void OnTriggerEnter(Collider collision) {
         switch(collision.gameObject.tag) {
             case "Sword":
-                changePoints(100, true);
+                changePoints(value, true);
                 sliceFruit(collision);
                 break;
             case "Axe":
-                changePoints(100, true);
+                changePoints(value, true);
                 sliceFruit(collision);
                 break;
         }
@@ -93,16 +112,17 @@ public class FruitScript : MonoBehaviour
                 smashFruit();
                 break;
             case "Hand":
-                changePoints(100, true);
+                changePoints(value, true);
                 smashFruit();
                 break;
             case "Bat":
-                changePoints(100, true);
+                changePoints(value, true);
                 smashFruit();
                 break;
             case "Fruit":
             case "SlicedFruit":
             case "SmashedFruit":
+            case "Block":
                 break;
             default:
                 changePoints(-25, false);
