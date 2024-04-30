@@ -12,7 +12,6 @@ public class GameController : MonoBehaviour
     public GameObject weapon1;
     public GameObject weapon2;
     public GameObject weapon3;
-    public GameObject weapon4;
     public GameObject[] fruit;
     public GameObject add_point;
 
@@ -32,6 +31,7 @@ public class GameController : MonoBehaviour
     [Header("Scene Objects")]
     public GameObject fruit_generation;
     public GameObject wall_generation;
+    public GameObject music;
 
     [Header("Other")]
     public int score = 0;
@@ -41,13 +41,19 @@ public class GameController : MonoBehaviour
 
     private float global_time;
     private float countdown_time = 5.5f;
-    private float game_play_time = 60.0f;
+    private float game_play_time = 45.0f;
     private float display_end_delay = 0.1f;
-    private float return_menu_time = 5.0f;
+    private float return_menu_time = 7.0f;
 
     private TextMeshProUGUI timer_text;
     private TextMeshProUGUI countdown_text;
     private TextMeshProUGUI points_text;
+    
+    void clearFruits() {
+        GameObject[] fruits = GameObject.FindGameObjectsWithTag("Fruit");
+        foreach(GameObject frt in fruits)
+            Destroy(frt);
+    }
 
     void clearWeapons() {
         if(left_hand.transform.Find("Weapon") != null)
@@ -195,6 +201,7 @@ public class GameController : MonoBehaviour
     }
 
     void gameDone() {
+        clearFruits();
         clearWeapons();
         fruit_generation.SetActive(false);
         timer.SetActive(false);
@@ -203,6 +210,7 @@ public class GameController : MonoBehaviour
         heart2.SetActive(false);
         heart3.SetActive(false);
         wall_generation.SetActive(false);
+        music.SetActive(false);
 
         end_display.SetActive(true);
         end_score.GetComponent<TextMeshProUGUI>().text = "" + score;
@@ -221,12 +229,12 @@ public class GameController : MonoBehaviour
 
             if(fruit_miss.Count >= 1) {
                 GameObject type = fruit[fruit_miss[0]];
-                Instantiate(type, new Vector3(-2.828427f, 14, 2.828427f), Quaternion.identity);
+                Instantiate(type, new Vector3(-2.828427f, 6, 2.828427f), Quaternion.identity);
                 fruit_miss.RemoveAt(0);
             }
             if(fruit_hit.Count >= 1) {
                 GameObject type = fruit[fruit_hit[0]];
-                Instantiate(type, new Vector3(2.828427f, 14, 2.828427f), Quaternion.identity);
+                Instantiate(type, new Vector3(2.828427f, 6, 2.828427f), Quaternion.identity);
                 fruit_hit.RemoveAt(0);
             }
 

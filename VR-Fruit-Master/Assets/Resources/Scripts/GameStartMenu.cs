@@ -15,6 +15,8 @@ public class GameStartMenu : MonoBehaviour
     public GameObject rangeTitle;
     public GameObject highscore;
     public GameObject new_display;
+    public GameObject titlecard;
+    public GameObject warning;
 
     private float fluctuate = 0.0f;
     private TextMeshProUGUI new_text;
@@ -40,8 +42,12 @@ public class GameStartMenu : MonoBehaviour
     }
 
     void Update() {
-        fluctuate += 0.025f;
-        new_display.transform.localScale = new Vector3(1.25f + Mathf.Cos(fluctuate)/4.0f, 1.25f + Mathf.Cos(fluctuate)/4.0f, 1);
+        fluctuate += Time.deltaTime*0.5f;
+        new_display.transform.localScale = new Vector3(1.25f + Mathf.Cos(fluctuate*4.0f)/4.0f, 1.25f + Mathf.Cos(fluctuate*4.0f)/4.0f, 1);
+
+        titlecard.transform.localScale = new Vector3(2.25f + Mathf.Cos(fluctuate)/4.0f, 2.25f + Mathf.Cos(fluctuate)/4.0f, 1);
+
+        WeaponCheck();
     }
 
     public void StartGame()
@@ -50,7 +56,17 @@ public class GameStartMenu : MonoBehaviour
         PlayerPrefs.SetInt("left_weapon", VariableHolder.left_weapon);
         PlayerPrefs.SetInt("right_weapon", VariableHolder.right_weapon);
 
-        SceneManager.LoadScene("GameScene");
+        if(VariableHolder.left_weapon != 0 || VariableHolder.right_weapon != 0) {
+            SceneManager.LoadScene("GameScene");
+        }
+    }
+
+    public void WeaponCheck() {
+        if(VariableHolder.left_weapon == 0 && VariableHolder.right_weapon == 0) {
+            warning.SetActive(true);
+        } else {
+            warning.SetActive(false);
+        }
     }
 
     public void ConfirmRangeSelection()
