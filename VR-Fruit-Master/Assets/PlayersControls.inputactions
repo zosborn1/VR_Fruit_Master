@@ -1,0 +1,34 @@
+{
+    "name": "PlayersControls",
+    "maps": [
+        {
+            "name": "GamePause",
+            "id": "4a052ea6-ab4a-4109-b44f-a30d9782e64f",
+            "actions": [
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "88d60223-28be-4377-92af-73be5c6fe867",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "71ebb47a-d1e2-4d01-b1da-37e71b2aebc0",
+                    "path": "<XRSimulatedController>{LeftHand}/secondaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

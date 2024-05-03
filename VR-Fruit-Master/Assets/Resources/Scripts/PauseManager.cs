@@ -1,28 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
+using UnityEngine.XR.Interaction.Toolkit; // Import XR Interaction Toolkit for XR controller handling
 using UnityEngine.SceneManagement;
 
 public class PauseManager : MonoBehaviour
 {
+    PlayersControls controls;
     public GameObject pauseMenu;
     public Button resumeButton;
     public Button mainMenuButton;
 
-    private XRController controller;
     private bool isPaused = false;
+    private XRController leftController; // Reference to the left XR controller
 
-    void Start()
+    void Awake()
     {
-        // Find the XR Controller component attached to this GameObject
-        controller = GetComponentInChildren<XRController>();
+        controls = new PlayersControls();
+        controls.Enable(); // Enable the PlayerControls
 
-        if (controller == null)
-        {
-            Debug.LogError("XR Controller not found! Make sure it's attached to the same GameObject or its children.");
-        }
+        controls.GamePause.Pause.performed += ctx => TogglePause(); // Subscribe to the pause action performed event
+
+        // Find the left XR Controller component attached to this GameObject
+        leftController = GetComponentInChildren<XRController>();
 
         // Disable pause menu at start
         pauseMenu.SetActive(false);
@@ -30,15 +32,6 @@ public class PauseManager : MonoBehaviour
         // Add onClick listeners for buttons
         resumeButton.onClick.AddListener(ResumeGame);
         mainMenuButton.onClick.AddListener(MainMenu);
-    }
-
-    void Update()
-    {
-        // Detect Y button press
-        if (controller != null && controller.inputDevice.TryGetFeatureValue(UnityEngine.XR.CommonUsages.secondaryButton, out bool isPressed) && isPressed)
-        {
-            TogglePause();
-        }
     }
 
     void TogglePause()
@@ -67,7 +60,7 @@ public class PauseManager : MonoBehaviour
 
     void MainMenu()
     {
-        // Load the start scene
-        SceneManager.LoadScene("StartScene");
+        // Load the main menu scene
+        SceneManager.LoadScene("MainMenu");
     }
 }
