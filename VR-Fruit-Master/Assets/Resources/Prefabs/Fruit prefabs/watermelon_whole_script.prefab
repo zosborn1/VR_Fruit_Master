@@ -129,6 +129,13 @@ MonoBehaviour:
   cross_section: {fileID: 2100000, guid: b3e545b9c9daa4948aba51591e13f05c, type: 2}
   force: 500
   smashed_version: {fileID: 6896136586978572795, guid: aeb7f73dd1d524dad9ee259bbc271bcb, type: 3}
+  value: 100
+  slice_audios:
+  - {fileID: 8300000, guid: 5c0be33f33998b247b06221672349bd0, type: 3}
+  - {fileID: 8300000, guid: 0fd908d95d6dfad4191aa8a136fa2e36, type: 3}
+  - {fileID: 8300000, guid: 2b8ffc719ed249842af8a0a6f6b43f9e, type: 3}
+  smash_audio: {fileID: 8300000, guid: 6cf31cd2d9869d744b0928f6d99e1c1b, type: 3}
+  audio_instance: {fileID: 7604764993469913643, guid: 403787c3d1e85df4b87f5c5a20b94762, type: 3}
 --- !u!64 &6610546498552313341
 MeshCollider:
   m_ObjectHideFlags: 0
