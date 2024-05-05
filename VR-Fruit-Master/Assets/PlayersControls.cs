@@ -35,6 +35,15 @@ public partial class @PlayersControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""StartScene"",
+                    ""type"": ""Button"",
+                    ""id"": ""4239e8da-7ca5-4e0d-add9-3e7c6b4e5499"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -48,6 +57,17 @@ public partial class @PlayersControls: IInputActionCollection2, IDisposable
                     ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""062bdddf-01ba-4fab-b829-d78b7b01e86b"",
+                    ""path"": ""<XRController>{LeftHand}/{PrimaryButton}"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""StartScene"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -57,6 +77,7 @@ public partial class @PlayersControls: IInputActionCollection2, IDisposable
         // GamePause
         m_GamePause = asset.FindActionMap("GamePause", throwIfNotFound: true);
         m_GamePause_Pause = m_GamePause.FindAction("Pause", throwIfNotFound: true);
+        m_GamePause_StartScene = m_GamePause.FindAction("StartScene", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -119,11 +140,13 @@ public partial class @PlayersControls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_GamePause;
     private List<IGamePauseActions> m_GamePauseActionsCallbackInterfaces = new List<IGamePauseActions>();
     private readonly InputAction m_GamePause_Pause;
+    private readonly InputAction m_GamePause_StartScene;
     public struct GamePauseActions
     {
         private @PlayersControls m_Wrapper;
         public GamePauseActions(@PlayersControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Pause => m_Wrapper.m_GamePause_Pause;
+        public InputAction @StartScene => m_Wrapper.m_GamePause_StartScene;
         public InputActionMap Get() { return m_Wrapper.m_GamePause; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -136,6 +159,9 @@ public partial class @PlayersControls: IInputActionCollection2, IDisposable
             @Pause.started += instance.OnPause;
             @Pause.performed += instance.OnPause;
             @Pause.canceled += instance.OnPause;
+            @StartScene.started += instance.OnStartScene;
+            @StartScene.performed += instance.OnStartScene;
+            @StartScene.canceled += instance.OnStartScene;
         }
 
         private void UnregisterCallbacks(IGamePauseActions instance)
@@ -143,6 +169,9 @@ public partial class @PlayersControls: IInputActionCollection2, IDisposable
             @Pause.started -= instance.OnPause;
             @Pause.performed -= instance.OnPause;
             @Pause.canceled -= instance.OnPause;
+            @StartScene.started -= instance.OnStartScene;
+            @StartScene.performed -= instance.OnStartScene;
+            @StartScene.canceled -= instance.OnStartScene;
         }
 
         public void RemoveCallbacks(IGamePauseActions instance)
@@ -160,8 +189,12 @@ public partial class @PlayersControls: IInputActionCollection2, IDisposable
         }
     }
     public GamePauseActions @GamePause => new GamePauseActions(this);
+
+    public object StartScene { get; internal set; }
+
     public interface IGamePauseActions
     {
         void OnPause(InputAction.CallbackContext context);
+        void OnStartScene(InputAction.CallbackContext context);
     }
 }
