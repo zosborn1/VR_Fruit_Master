@@ -50,7 +50,7 @@ public partial class @PlayersControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""71ebb47a-d1e2-4d01-b1da-37e71b2aebc0"",
-                    ""path"": ""<XRSimulatedController>{LeftHand}/secondaryButton"",
+                    ""path"": ""<OculusTouchController>{LeftHand}/secondaryButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -61,7 +61,7 @@ public partial class @PlayersControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""062bdddf-01ba-4fab-b829-d78b7b01e86b"",
-                    ""path"": ""<XRController>{LeftHand}/{PrimaryButton}"",
+                    ""path"": ""<OculusTouchController>{LeftHand}/primaryButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -189,9 +189,6 @@ public partial class @PlayersControls: IInputActionCollection2, IDisposable
         }
     }
     public GamePauseActions @GamePause => new GamePauseActions(this);
-
-    public object StartScene { get; internal set; }
-
     public interface IGamePauseActions
     {
         void OnPause(InputAction.CallbackContext context);
